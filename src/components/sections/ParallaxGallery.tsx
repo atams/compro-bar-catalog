@@ -1,0 +1,148 @@
+"use client";
+
+import { useRef } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const catalogItems = [
+   {
+      id: 1,
+      title: "Vesper Martini",
+      price: "$24",
+      ingredients: ["Gordon's Gin", "Smirnoff Vodka", "Lillet Blanc"],
+      description: "Shaken, not stirred. A cinematic classic with a sharp, botanical finish.",
+      image: "https://images.unsplash.com/photo-1575023782549-62ca0d244b39?q=80&w=2600&auto=format&fit=crop",
+   },
+   {
+      id: 2,
+      title: "Smoked Old Fashioned",
+      price: "$28",
+      ingredients: ["Bulleit Bourbon", "Maple Syrup", "Angostura Bitters", "Cedar Smoke"],
+      description: "Hand-chipped ice and aromatic wood smoke for a deep, campfire finish.",
+      image: "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?q=80&w=2600&auto=format&fit=crop",
+   },
+   {
+      id: 3,
+      title: "Midnight Negroni",
+      price: "$26",
+      ingredients: ["Tanqueray 10", "Black Truffle Campari", "Carpano Antica"],
+      description: "A dark, earthy twist on the Italian classic using truffle-infused spirits.",
+      image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=2600&auto=format&fit=crop",
+   },
+   {
+      id: 4,
+      title: "Golden Hour",
+      price: "$32",
+      ingredients: ["Louis XIII Cognac", "Saffron Honey", "24k Gold Flake"],
+      description: "Our most exclusive creation. A liquid sunset in a glass.",
+      image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2600&auto=format&fit=crop",
+   },
+];
+
+export default function ParallaxGallery() {
+   const targetRef = useRef<HTMLDivElement>(null);
+   const { scrollYProgress } = useScroll({
+      target: targetRef,
+   });
+
+   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-300%"]); // Based on 4 items
+
+   return (
+      <section ref={targetRef} id="gallery" className="relative h-[400vh] bg-primary">
+         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+            {/* Section Title Background */}
+            <div className="absolute top-12 left-12 z-0 opacity-10">
+               <h2 className="font-playfair text-[15vw] font-black text-white leading-none tracking-tighter uppercase whitespace-nowrap">
+                  The Catalog
+               </h2>
+            </div>
+
+            <motion.div style={{ x }} className="flex gap-24 px-12 md:px-24">
+               {catalogItems.map((item, index) => (
+                  <CatalogCard key={item.id} item={item} index={index} />
+               ))}
+            </motion.div>
+
+            {/* Horizontal Progress Bar */}
+            <div className="absolute bottom-12 left-12 right-12 h-px bg-white/10 z-20 overflow-hidden">
+               <motion.div
+                  style={{ scaleX: scrollYProgress }}
+                  className="h-full bg-accent-gold origin-left w-full"
+               />
+            </div>
+         </div>
+      </section>
+   );
+}
+
+function CatalogCard({ item, index }: { item: any; index: number }) {
+   return (
+      <div className="relative w-[300px] md:w-[600px] flex-shrink-0 flex flex-col items-center justify-center group/card perspective-1000">
+         {/* Parallax Image Layer with 3D Flip */}
+         <motion.div
+            whileHover={{ rotateY: 10, rotateX: -5 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-full aspect-[4/5] md:aspect-[16/10] overflow-hidden group rounded-2xl transform-style-3d shadow-2xl"
+         >
+            <motion.div
+               whileHover={{ scale: 1.1 }}
+               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+               className="relative w-full h-full"
+            >
+               <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-700"
+               />
+
+               {/* Gradual Blur Overlay */}
+               <div className="absolute inset-0 bg-linear-to-b from-transparent via-primary/10 to-primary/80" />
+               <div className="absolute inset-0 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+               {/* Label Reveal */}
+               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <span className="font-playfair italic text-white text-4xl border-b border-accent-gold/40 pb-2">Crafted</span>
+               </div>
+            </motion.div>
+
+            {/* Price Tag Overlay */}
+            <div className="absolute top-6 right-6 bg-primary/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 z-20">
+               <span className="font-manrope text-accent-gold text-lg font-bold">{item.price}</span>
+            </div>
+         </motion.div>
+
+         {/* Content Details */}
+         <div className="mt-12 w-full text-left md:flex justify-between items-start gap-12">
+            <div className="max-w-md">
+               <h3 className="font-playfair text-4xl md:text-5xl text-white mb-4 leading-tight">
+                  {item.title}
+               </h3>
+               <p className="text-secondary/60 font-manrope text-sm md:text-base leading-relaxed mb-6">
+                  {item.description}
+               </p>
+
+               <div className="flex flex-wrap gap-2">
+                  {item.ingredients.map((ing: string) => (
+                     <span key={ing} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-secondary/80">
+                        {ing}
+                     </span>
+                  ))}
+               </div>
+            </div>
+
+            <div className="mt-8 md:mt-0 opacity-40 hover:opacity-100 transition-opacity">
+               <button className="group flex items-center gap-4">
+                  <span className="font-manrope uppercase tracking-[0.3em] text-[10px] text-accent-gold group-hover:tracking-[0.5em] transition-all">Order</span>
+                  <div className="w-12 h-px bg-accent-gold" />
+               </button>
+            </div>
+         </div>
+
+         {/* Background Number */}
+         <span className="absolute -top-12 -left-12 font-playfair italic text-8xl text-white/5 select-none z-[-1]">
+            0{index + 1}
+         </span>
+      </div>
+   );
+}
