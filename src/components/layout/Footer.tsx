@@ -1,10 +1,13 @@
 "use client";
 
-import { Instagram, Mail } from "lucide-react";
-import Link from "next/link";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
+import ClientLink from "@/components/ui/ClientLink";
 import { motion } from "framer-motion";
+import { useClient } from "@/context/ClientContext";
 
 export default function Footer() {
+  const { name, location } = useClient();
+
   return (
     <footer
       className="fixed bottom-0 left-0 w-full h-[600px] md:h-[500px] bg-primary z-0 flex flex-col justify-between text-secondary overflow-hidden border-t border-white/5"
@@ -17,10 +20,10 @@ export default function Footer() {
           <div>
             <h5 className="font-sans uppercase tracking-widest text-xs mb-6 text-accent-gold">Navigation</h5>
             <ul className="space-y-4">
-              <li><Link href="/#about" className="text-2xl font-syne hover:text-accent-gold transition-colors">Philosophy</Link></li>
-              <li><Link href="/catalog" className="text-2xl font-syne hover:text-accent-gold transition-colors">Catalog</Link></li>
-              <li><Link href="/events" className="text-2xl font-syne hover:text-accent-gold transition-colors">Events</Link></li>
-              <li><Link href="/reserve" className="text-2xl font-syne hover:text-accent-gold transition-colors">Reservation</Link></li>
+              <li><ClientLink href="/" className="text-2xl font-syne hover:text-accent-gold transition-colors">Philosophy</ClientLink></li>
+              <li><ClientLink href="/catalog" className="text-2xl font-syne hover:text-accent-gold transition-colors">Catalog</ClientLink></li>
+              <li><ClientLink href="/events" className="text-2xl font-syne hover:text-accent-gold transition-colors">Events</ClientLink></li>
+              <li><ClientLink href="/reserve" className="text-2xl font-syne hover:text-accent-gold transition-colors">Reservation</ClientLink></li>
             </ul>
           </div>
 
@@ -30,7 +33,7 @@ export default function Footer() {
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as const }}
             className="font-syne font-black text-[15vw] md:text-[10vw] leading-none tracking-tightest select-none text-stroke opacity-10 mt-auto mask-fog-v uppercase"
           >
-            MIDNIGHT
+            {name}
           </motion.h1>
         </div>
 
@@ -40,21 +43,21 @@ export default function Footer() {
             <div>
               <h5 className="font-sans uppercase tracking-widest text-xs mb-4 text-accent-gold">Location</h5>
               <p className="font-syne text-2xl md:text-3xl leading-tight text-white md:whitespace-pre-line uppercase font-bold">
-                Senopati Suites, <br className="hidden md:block" /> Jakarta Selatan
+                {location}
               </p>
             </div>
             <div>
               <h5 className="font-sans uppercase tracking-widest text-xs mb-4 text-accent-gold">Connect</h5>
               <div className="flex gap-4 justify-end">
-                <a href="#" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary transition-all duration-500 glow-button"><Instagram size={20} strokeWidth={1.2} /></a>
-                <a href="#" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary transition-all duration-500 glow-button"><Mail size={20} strokeWidth={1.2} /></a>
+                <a href="https://www.instagram.com/atamsindonesia/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary transition-all duration-500 glow-button"><Instagram size={20} strokeWidth={1.2} /></a>
+                <a href="https://wa.me/6287777888907" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary transition-all duration-500 glow-button"><MessageCircle size={20} strokeWidth={1.2} /></a>
               </div>
             </div>
           </div>
 
           <div className="mt-12 flex gap-8 text-[10px] opacity-40 font-sans uppercase tracking-widest">
-            <p>© 2026 Midnight Mixology</p>
-            <p>Designed by ATAMS</p>
+            <p>© 2026 {name === "MIDNIGHT" ? "Midnight Mixology" : name}</p>
+            <a href="https://atamsindonesia.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-opacity">Designed by ATAMS</a>
           </div>
         </div>
       </div>

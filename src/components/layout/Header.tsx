@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import ClientLink from "@/components/ui/ClientLink";
 import { Menu, X } from "lucide-react";
+import { useClient } from "@/context/ClientContext";
 
 const navItems = [
   { name: "About", href: "/#about", label: "01" },
@@ -11,23 +12,19 @@ const navItems = [
   { name: "Events", href: "/events", label: "03" },
   { name: "Reservation", href: "/reserve", label: "04" },
 ];
-
 const menuVariants = {
-  initial: {
-    scaleY: 0,
-    transformOrigin: "top",
-  },
+  initial: { opacity: 0 },
   animate: {
-    scaleY: 1,
+    opacity: 1,
     transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1] as const, // Custom elegant ease
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1] as const
     }
   },
   exit: {
-    scaleY: 0,
+    opacity: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.5,
       ease: [0.22, 1, 0.36, 1] as const,
       delay: 0.2
     }
@@ -35,33 +32,33 @@ const menuVariants = {
 };
 
 const linkVariants = {
-  initial: { y: 100, opacity: 0 },
+  initial: { y: "100%" },
   animate: (i: number) => ({
     y: 0,
-    opacity: 1,
     transition: {
       duration: 1,
       ease: [0.22, 1, 0.36, 1] as const,
-      delay: 0.3 + (i * 0.1),
+      delay: 0.2 + i * 0.1
     }
   }),
-  exit: (i: number) => ({
-    y: 100,
-    opacity: 0,
+  exit: {
+    y: "100%",
     transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as const,
-      delay: i * 0.05,
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1] as const
     }
-  })
+  }
 };
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { name } = useClient();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -71,7 +68,7 @@ export default function Header() {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "unset";
     }
   }, [isMenuOpen]);
 
@@ -81,20 +78,17 @@ export default function Header() {
         className={`fixed top-0 left-0 right-0 z-[60] px-6 md:px-12 py-6 transition-all duration-500 mix-blend-difference text-white flex justify-between items-center ${scrolled ? "py-4" : "py-8"
           }`}
       >
-        <Link href="/" className="group">
+        <ClientLink href="/" className="group">
           <span className="font-syne text-2xl font-black tracking-tighter block group-hover:tracking-widest transition-all duration-700 uppercase">
-            MIDNIGHT
+            {name}
           </span>
-        </Link>
+        </ClientLink>
 
         <button
           onClick={() => setIsMenuOpen(true)}
           className="flex items-center gap-2 group"
         >
-          <span className="font-sans text-sm uppercase tracking-widest group-hover:text-accent-gold transition-colors font-bold">Menu</span>
-          <div className="w-8 h-0.5 bg-white group-hover:bg-accent-gold transition-colors relative">
-            <div className="absolute top-0 left-0 w-full h-full bg-accent-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-          </div>
+          {/* ... */}
         </button>
       </header>
 
@@ -110,7 +104,7 @@ export default function Header() {
             {/* Top Bar inside Overlay */}
             <div className="absolute top-0 left-0 right-0 px-6 md:px-12 py-8 flex justify-between items-center z-[80] text-primary">
               <span className="font-syne text-2xl font-black tracking-tighter text-primary uppercase">
-                MIDNIGHT
+                {name}
               </span>
               <button
                 onClick={() => setIsMenuOpen(false)}
@@ -130,7 +124,7 @@ export default function Header() {
                     variants={linkVariants}
                     className="relative group"
                   >
-                    <Link
+                    <ClientLink
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
                       className="block"
@@ -154,7 +148,7 @@ export default function Header() {
                           </motion.span>
                         ))}
                       </span>
-                    </Link>
+                    </ClientLink>
                   </motion.div>
                 </div>
               ))}
@@ -162,8 +156,8 @@ export default function Header() {
 
             {/* Bottom Info */}
             <div className="absolute bottom-12 left-6 md:left-24 flex gap-8 text-primary/60 font-sans text-xs uppercase tracking-widest font-bold">
-              <a href="#" className="hover:text-primary transition-colors">Instagram</a>
-              <a href="#" className="hover:text-primary transition-colors">Maps</a>
+              <a href="https://www.instagram.com/atamsindonesia/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
+              <a href="https://wa.me/6287777888907" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">WhatsApp</a>
             </div>
           </motion.div>
         )}
