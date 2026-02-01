@@ -52,7 +52,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-accent-gold font-sans uppercase tracking-widest text-[10px] mb-1 font-bold">Direct Line</h4>
-                  <p className="font-syne text-xl text-white font-bold uppercase tracking-tight">+62 21 555 0192</p>
+                  <p className="font-syne text-xl text-white font-bold uppercase tracking-tight">+6287777888907</p>
                 </div>
               </div>
             </motion.div>
