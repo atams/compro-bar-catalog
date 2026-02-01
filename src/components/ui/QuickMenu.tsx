@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { List, X, ChevronRight } from "lucide-react";
 
 const menuItems = [
@@ -63,12 +64,20 @@ export default function QuickMenu() {
                         ))}
                      </div>
 
+                     <Link
+                        href="/catalog"
+                        onClick={() => setIsOpen(false)}
+                        className="w-full mt-6 py-4 bg-accent-gold text-primary rounded-xl font-manrope uppercase tracking-[0.3em] text-[10px] text-center block hover:bg-white transition-colors"
+                     >
+                        View Full Catalog
+                     </Link>
+
                      <motion.button
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
                         onClick={() => setIsOpen(false)}
-                        className="w-full mt-12 py-4 border border-white/10 rounded-xl font-manrope uppercase tracking-[0.3em] text-[10px] text-white/40 hover:text-white transition-colors"
+                        className="w-full mt-4 py-4 border border-white/10 rounded-xl font-manrope uppercase tracking-[0.3em] text-[10px] text-white/40 hover:text-white transition-colors"
                      >
                         Close Menu
                      </motion.button>
