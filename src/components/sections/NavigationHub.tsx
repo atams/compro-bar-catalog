@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Wine, CalendarDays, Ticket } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRef } from "react";
 
 const BentoItem = ({
    title,
@@ -51,10 +52,10 @@ const BentoItem = ({
          </div>
 
          <div>
-            <h3 className="text-3xl font-playfair font-bold text-white mb-2">
+            <h3 className="text-3xl font-syne font-bold text-white mb-2 uppercase">
                {title}
             </h3>
-            <p className="text-sm font-manrope text-secondary/60 group-hover:text-white/80 transition-colors">
+            <p className="text-sm font-sans text-secondary/60 group-hover:text-white/80 transition-colors">
                {subtitle}
             </p>
          </div>
@@ -66,15 +67,10 @@ const BentoItem = ({
 );
 
 export default function NavigationHub() {
-   return (
-      <section className="relative py-32 px-6 md:px-12 max-w-[1400px] mx-auto overflow-hidden">
-         {/* Decorative Background Text */}
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-[0.02] pointer-events-none select-none">
-            <h2 className="font-playfair text-[30vw] font-black leading-none whitespace-nowrap">
-               EXPERIENCE
-            </h2>
-         </div>
+   const sectionRef = useRef<HTMLDivElement>(null);
 
+   return (
+      <section ref={sectionRef} className="relative py-32 px-6 md:px-12 max-w-[1400px] mx-auto overflow-hidden">
          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
