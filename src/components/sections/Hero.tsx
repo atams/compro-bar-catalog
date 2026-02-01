@@ -4,30 +4,30 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import GlowButton from "@/components/ui/GlowButton";
 import MarqueeText from "@/components/ui/MarqueeText";
+import { useClient } from "@/context/ClientContext";
 
 export default function Hero() {
+  const { name, tagline } = useClient();
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
+  const { scrollY } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const y = useTransform(scrollY, [0, 1000], [0, 400]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
     <section
       id="hero"
       ref={containerRef}
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-primary"
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-primary"
     >
-      {/* Background Ambience */}
-      <motion.div
-        style={{ scale }}
-        className="absolute inset-0 z-0"
-      >
-        <div className="absolute inset-0 bg-linear-to-b from-transparent via-primary/40 to-primary/95" />
+      {/* Background Video/Image Placeholder */}
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-primary/40 z-10" />
+        {/* Placeholder gradient for now */}
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-primary/50 to-primary" />
       </motion.div>
 
       {/* Main Content */}
@@ -37,9 +37,9 @@ export default function Hero() {
       >
         {/* Top Detail */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="mb-8 flex items-center gap-4"
         >
           <div className="w-12 h-px bg-accent-gold/40" />
@@ -57,7 +57,7 @@ export default function Hero() {
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
             className="font-syne text-[15vw] md:text-[10vw] leading-[0.75] font-black text-white tracking-tightest mb-4 uppercase"
           >
-            MIDNIGHT
+            {name}
           </motion.h1>
 
           <motion.div
@@ -68,7 +68,7 @@ export default function Hero() {
           >
             <div className="h-px w-24 bg-white/20 hidden md:block" />
             <h2 className="font-syne italic text-3xl md:text-5xl text-accent-gold font-light tracking-tight">
-              The Art of Mixology
+              {tagline}
             </h2>
             <div className="h-px w-24 bg-white/20 hidden md:block" />
           </motion.div>

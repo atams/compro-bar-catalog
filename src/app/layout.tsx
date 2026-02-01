@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import { Syne, Plus_Jakarta_Sans, Cinzel_Decorative, Manrope } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import SmoothScroll from "@/components/ui/SmoothScroll";
-import InteractiveCursor from "@/components/ui/InteractiveCursor";
-import LoadingScreen from "@/components/ui/LoadingScreen";
 import NebulaBackground from "@/components/ui/NebulaBackground";
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
-import QuickMenu from "@/components/ui/QuickMenu";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -44,18 +38,7 @@ export default function RootLayout({
       <body suppressHydrationWarning className={`${syne.variable} ${plusJakarta.variable} ${cinzel.variable} ${manrope.variable} font-sans antialiased bg-background text-foreground overflow-x-hidden selection:bg-accent selection:text-white`}>
         <NebulaBackground />
         <NoiseOverlay />
-        <SmoothScroll>
-          <QuickMenu />
-          <InteractiveCursor />
-          <Header />
-          <main className="relative min-h-screen z-10 bg-background shadow-[0_-20px_50px_rgba(0,0,0,0.5)] rounded-b-[60px]">
-            {children}
-          </main>
-          {/* Spacer for Footer Reveal */}
-          <div className="h-[600px] md:h-[500px] pointer-events-none" />
-        </SmoothScroll>
-        <Footer />
-        <LoadingScreen />
+        {children}
       </body>
     </html>
   );

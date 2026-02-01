@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useClient } from "@/context/ClientContext";
 
 export default function LoadingScreen() {
+   const { name } = useClient();
    const [isComplete, setIsComplete] = useState(false);
-   const brandName = "MIDNIGHT";
+   const brandName = name || "MIDNIGHT";
 
    useEffect(() => {
       const timer = setTimeout(() => setIsComplete(true), 2500);
