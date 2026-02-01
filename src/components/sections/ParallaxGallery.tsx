@@ -2,11 +2,12 @@
 
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import ClientLink from "@/components/ui/ClientLink";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useClient } from "@/context/ClientContext";
 
-const catalogItems = [
+const defaultCatalogItems = [
    {
       id: 1,
       title: "Vesper Martini",
@@ -42,9 +43,12 @@ const catalogItems = [
 ];
 
 export default function ParallaxGallery() {
+   const { catalog } = useClient();
    const targetRef = useRef<HTMLDivElement>(null);
    const containerRef = useRef<HTMLDivElement>(null);
    const [scrollDistance, setScrollDistance] = useState(0);
+
+   const catalogItems = catalog || defaultCatalogItems;
 
    const { scrollYProgress } = useScroll({
       target: targetRef,
@@ -62,7 +66,7 @@ export default function ParallaxGallery() {
       updateWidth();
       window.addEventListener("resize", updateWidth);
       return () => window.removeEventListener("resize", updateWidth);
-   }, []);
+   }, [catalogItems]); // Recalculate if items change
 
    const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
    const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
@@ -87,7 +91,7 @@ export default function ParallaxGallery() {
 
                {/* Final CTA Card */}
                <div className="relative w-[300px] md:w-[600px] shrink-0 flex flex-col items-center justify-center">
-                  <Link href="/catalog" className="group/cta relative w-full aspect-4/5 md:aspect-16/10 bg-white/5 rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-8 overflow-hidden hover:bg-white/10 transition-all duration-700 glow-button">
+                  <ClientLink href="/catalog" className="group/cta relative w-full aspect-4/5 md:aspect-16/10 bg-white/5 rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-8 overflow-hidden hover:bg-white/10 transition-all duration-700 glow-button">
                      <div className="absolute inset-0 bg-radial-gradient from-accent-gold/20 to-transparent opacity-0 group-hover/cta:opacity-100 transition-opacity duration-700" />
 
                      <div className="relative z-10 flex flex-col items-center gap-4">
@@ -97,7 +101,7 @@ export default function ParallaxGallery() {
                         <h3 className="font-syne text-5xl text-white text-center font-black uppercase tracking-tightest">Explore Full <span className="text-accent-gold italic">Catalog</span></h3>
                         <p className="font-sans text-accent-gold/60 text-[10px] uppercase tracking-[0.4em] font-bold">Signature Collections</p>
                      </div>
-                  </Link>
+                  </ClientLink>
                </div>
             </motion.div>
 
@@ -114,6 +118,9 @@ export default function ParallaxGallery() {
 }
 
 function CatalogCard({ item, index }: { item: any; index: number }) {
+   const [imgSrc, setImgSrc] = useState(item.image);
+   const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?q=80&w=2600&auto=format&fit=crop";
+
    return (
       <div className="relative w-[300px] md:w-[600px] shrink-0 flex flex-col items-center justify-center group/card perspective-1000">
          {/* Parallax Image Layer with 3D Flip */}
@@ -128,10 +135,11 @@ function CatalogCard({ item, index }: { item: any; index: number }) {
                className="relative w-full h-full"
             >
                <Image
-                  src={item.image}
+                  src={imgSrc}
                   alt={item.title}
                   fill
                   className="object-cover transition-transform duration-700"
+                  onError={() => setImgSrc(FALLBACK_IMAGE)}
                />
 
                {/* Gradual Blur Overlay */}
@@ -178,7 +186,7 @@ function CatalogCard({ item, index }: { item: any; index: number }) {
          </div>
 
          {/* Background Number */}
-         <span className="absolute -top-12 -left-12 font-syne italic font-black text-8xl text-white/5 select-none z-[-1] tracking-tightest">
+         <span className="absolute -top-24 -left-16 font-syne italic font-black text-9xl text-white/10 select-none z-[-1] tracking-tightest transition-all duration-500 group-hover/card:-translate-y-4">
             0{index + 1}
          </span>
       </div>
