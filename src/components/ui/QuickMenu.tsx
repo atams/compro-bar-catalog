@@ -3,9 +3,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import ClientLink from "@/components/ui/ClientLink";
 import { List, X, ChevronRight } from "lucide-react";
 
-const menuItems = [
+import { useClient } from "@/context/ClientContext";
+
+const defaultMenuItems = [
    { name: "Vesper Martini", category: "Classic", price: "$24" },
    { name: "Smoked Old Fashioned", category: "Whiskey", price: "$28" },
    { name: "Midnight Negroni", category: "Aperitivo", price: "$26" },
@@ -15,7 +18,15 @@ const menuItems = [
 ];
 
 export default function QuickMenu() {
+   const { catalog } = useClient();
    const [isOpen, setIsOpen] = useState(false);
+
+   // Map catalog items to menu format if available
+   const menuItems = catalog ? catalog.map(item => ({
+      name: item.title,
+      category: "Special", // Simplified for now, or add category to CatalogItem
+      price: item.price
+   })) : defaultMenuItems;
 
    return (
       <>
@@ -64,13 +75,13 @@ export default function QuickMenu() {
                         ))}
                      </div>
 
-                     <Link
+                     <ClientLink
                         href="/catalog"
                         onClick={() => setIsOpen(false)}
                         className="w-full mt-6 py-4 bg-accent-gold text-primary rounded-xl font-manrope uppercase tracking-[0.3em] text-[10px] text-center block hover:bg-white transition-colors"
                      >
                         View Full Catalog
-                     </Link>
+                     </ClientLink>
 
                      <motion.button
                         initial={{ opacity: 0 }}
