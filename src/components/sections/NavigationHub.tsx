@@ -92,8 +92,8 @@ export default function NavigationHub() {
                title="Reserve"
                subtitle="Secure your table for tonight"
                icon={CalendarDays}
-               href="#contact"
-               image="https://images.unsplash.com/photo-1544145945-f904253db0ad?q=80&w=2600&auto=format&fit=crop"
+               href="/reserve"
+               image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2600&auto=format&fit=crop"
                className="md:col-span-3 md:row-span-1"
                delay={0.2}
             />
@@ -103,7 +103,7 @@ export default function NavigationHub() {
                title="Events"
                subtitle="Jazz nights & Masterclasses"
                icon={Ticket}
-               href="#projects"
+               href="/events"
                image="https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=2600&auto=format&fit=crop"
                className="md:col-span-3 md:row-span-1"
                delay={0.3}
