@@ -28,10 +28,9 @@ export default function Hero() {
         className="absolute inset-0 z-0"
       >
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-primary/40 to-primary/95" />
-        {/* Subtle noise or texture could be here */}
       </motion.div>
 
-      {/* Main Poster Content */}
+      {/* Main Content */}
       <motion.div
         style={{ y, opacity }}
         className="relative z-10 w-full px-6 flex flex-col items-center"
@@ -44,7 +43,7 @@ export default function Hero() {
           className="mb-8 flex items-center gap-4"
         >
           <div className="w-12 h-px bg-accent-gold/40" />
-          <span className="font-manrope uppercase tracking-[0.5em] text-[10px] md:text-xs text-accent-gold">
+          <span className="font-sans uppercase tracking-[0.5em] text-[10px] md:text-xs text-accent-gold">
             Jakarta Elite Lounge
           </span>
           <div className="w-12 h-px bg-accent-gold/40" />
@@ -56,7 +55,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="font-playfair text-[18vw] md:text-[14vw] leading-[0.75] font-black text-white tracking-tightest mb-4"
+            className="font-syne text-[18vw] md:text-[14vw] leading-[0.75] font-black text-white tracking-tightest mb-4 uppercase"
           >
             MIDNIGHT
           </motion.h1>
@@ -68,7 +67,7 @@ export default function Hero() {
             className="flex items-center gap-6"
           >
             <div className="h-px w-24 bg-white/20 hidden md:block" />
-            <h2 className="font-playfair italic text-3xl md:text-5xl text-accent-gold/80 font-light">
+            <h2 className="font-syne italic text-3xl md:text-5xl text-accent-gold font-light tracking-tight">
               The Art of Mixology
             </h2>
             <div className="h-px w-24 bg-white/20 hidden md:block" />
@@ -80,7 +79,10 @@ export default function Hero() {
             transition={{ delay: 1.2 }}
             className="mt-12"
           >
-            <GlowButton onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}>
+            <GlowButton
+              className="glow-button"
+              onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Explore Catalog
             </GlowButton>
           </motion.div>
@@ -94,16 +96,16 @@ export default function Hero() {
           className="mt-24 grid grid-cols-2 md:grid-cols-3 gap-12 text-center"
         >
           <div className="flex flex-col gap-1">
-            <span className="text-white/30 text-[9px] uppercase tracking-widest font-manrope">Hours</span>
-            <span className="text-white/80 text-sm font-playfair">19:00 — Late</span>
+            <span className="text-white/30 text-[9px] uppercase tracking-widest font-sans">Hours</span>
+            <span className="text-white/80 text-sm font-syne">19:00 — Late</span>
           </div>
           <div className="hidden md:flex flex-col gap-1">
-            <span className="text-white/30 text-[9px] uppercase tracking-widest font-manrope">Vibe</span>
-            <span className="text-white/80 text-sm font-playfair">Cinematic Dark</span>
+            <span className="text-white/30 text-[9px] uppercase tracking-widest font-sans">Vibe</span>
+            <span className="text-white/80 text-sm font-syne">Cinematic Dark</span>
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-white/30 text-[9px] uppercase tracking-widest font-manrope">Table</span>
-            <span className="text-white/80 text-sm font-playfair italic underline decoration-accent-gold/30">By Reservation</span>
+            <span className="text-white/30 text-[9px] uppercase tracking-widest font-sans">Table</span>
+            <span className="text-white/80 text-sm font-syne italic underline decoration-accent-gold/30">By Reservation</span>
           </div>
         </motion.div>
       </motion.div>
@@ -116,7 +118,7 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
         <div className="w-px h-12 bg-linear-to-b from-accent-gold/50 to-transparent" />
-        <span className="text-[9px] tracking-[0.4em] text-accent-gold/40 uppercase font-manrope">Scroll to Explore</span>
+        <span className="text-[9px] tracking-[0.4em] text-accent-gold/40 uppercase font-sans">Scroll to Explore</span>
       </motion.div>
 
       {/* Atmospheric Gradients */}
@@ -125,7 +127,7 @@ export default function Hero() {
 
       {/* Background Marquee */}
       <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 opacity-5 pointer-events-none rotate-[-5deg] z-0">
-        <MarqueeText text="VESPER MARTINI • SMOKED OLD FASHIONED • MIDNIGHT NEGRONI • GOLDEN HOUR • " speed={40} className="font-playfair text-[10vw] font-black italic uppercase leading-none" />
+        <MarqueeText text="VESPER MARTINI • SMOKED OLD FASHIONED • MIDNIGHT NEGRONI • GOLDEN HOUR • " speed={40} className="font-syne text-[10vw] font-black italic uppercase leading-none" />
       </div>
     </section>
   );

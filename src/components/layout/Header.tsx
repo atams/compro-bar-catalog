@@ -82,7 +82,7 @@ export default function Header() {
           }`}
       >
         <Link href="/" className="group">
-          <span className="font-playfair text-2xl font-black tracking-tighter block group-hover:tracking-widest transition-all duration-700">
+          <span className="font-syne text-2xl font-black tracking-tighter block group-hover:tracking-widest transition-all duration-700 uppercase">
             MIDNIGHT
           </span>
         </Link>
@@ -91,7 +91,7 @@ export default function Header() {
           onClick={() => setIsMenuOpen(true)}
           className="flex items-center gap-2 group"
         >
-          <span className="font-manrope text-sm uppercase tracking-widest group-hover:text-accent-gold transition-colors">Menu</span>
+          <span className="font-sans text-sm uppercase tracking-widest group-hover:text-accent-gold transition-colors font-bold">Menu</span>
           <div className="w-8 h-0.5 bg-white group-hover:bg-accent-gold transition-colors relative">
             <div className="absolute top-0 left-0 w-full h-full bg-accent-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
           </div>
@@ -109,14 +109,14 @@ export default function Header() {
           >
             {/* Top Bar inside Overlay */}
             <div className="absolute top-0 left-0 right-0 px-6 md:px-12 py-8 flex justify-between items-center z-[80] text-primary">
-              <span className="font-playfair text-2xl font-black tracking-tighter text-primary">
+              <span className="font-syne text-2xl font-black tracking-tighter text-primary uppercase">
                 MIDNIGHT
               </span>
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-2 group text-primary"
               >
-                <span className="font-manrope text-sm uppercase tracking-widest group-hover:text-accent transition-colors">Close</span>
+                <span className="font-sans text-sm uppercase tracking-widest group-hover:text-accent transition-colors font-bold">Close</span>
                 <X className="group-hover:rotate-90 transition-transform duration-500" strokeWidth={1.2} />
               </button>
             </div>
@@ -135,10 +135,10 @@ export default function Header() {
                       onClick={() => setIsMenuOpen(false)}
                       className="block"
                     >
-                      <span className="absolute -left-12 top-1/2 -translate-y-1/2 text-sm font-manrope text-accent opacity-0 group-hover:opacity-100 group-hover:-left-8 transition-all duration-500 hidden md:block">
+                      <span className="absolute -left-12 top-1/2 -translate-y-1/2 text-sm font-sans text-accent opacity-0 group-hover:opacity-100 group-hover:-left-8 transition-all duration-500 hidden md:block font-bold">
                         {item.label}
                       </span>
-                      <span className="font-playfair text-[12vw] md:text-[8vw] leading-[0.9] font-black text-transparent stroke-text group-hover:text-primary transition-colors duration-500 uppercase flex overflow-hidden">
+                      <span className="font-syne text-[12vw] md:text-[8vw] leading-[0.9] font-black text-transparent stroke-text group-hover:text-primary transition-colors duration-500 uppercase flex overflow-hidden tracking-tightest">
                         {item.name.split("").map((letter, index) => (
                           <motion.span
                             key={index}
@@ -161,7 +161,7 @@ export default function Header() {
             </nav>
 
             {/* Bottom Info */}
-            <div className="absolute bottom-12 left-6 md:left-24 flex gap-8 text-primary/60 font-manrope text-sm">
+            <div className="absolute bottom-12 left-6 md:left-24 flex gap-8 text-primary/60 font-sans text-xs uppercase tracking-widest font-bold">
               <a href="#" className="hover:text-primary transition-colors">Instagram</a>
               <a href="#" className="hover:text-primary transition-colors">Maps</a>
             </div>
@@ -171,10 +171,10 @@ export default function Header() {
 
       <style jsx global>{`
         .stroke-text {
-            -webkit-text-stroke: 1px rgba(10, 10, 10, 0.2);
+            -webkit-text-stroke: 1px rgba(10, 10, 10, 0.15);
         }
         .bg-secondary .stroke-text {
-            -webkit-text-stroke: 1px rgba(10, 10, 10, 1);
+            -webkit-text-stroke: 1px rgba(10, 10, 10, 0.4);
         }
       `}</style>
     </>
