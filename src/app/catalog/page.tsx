@@ -1,11 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { useRef } from "react";
 
 const fullMenu = [
+   // ... (same as before or slightly truncated if needed, keeping full for now as it's the catalog page)
    {
       id: 1,
       title: "Vesper Martini",
@@ -60,8 +62,27 @@ const fullMenu = [
 ];
 
 export default function CatalogPage() {
+   const containerRef = useRef<HTMLDivElement>(null);
+   const { scrollYProgress } = useScroll({
+      target: containerRef,
+      offset: ["start start", "end end"]
+   });
+
+   const bgy = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+   const bgOpacity = useTransform(scrollYProgress, [0, 0.4], [0.05, 0]);
+
    return (
-      <div className="min-h-screen bg-primary pt-32 pb-24 px-6">
+      <div ref={containerRef} className="min-h-screen bg-primary text-white selection:bg-accent-gold selection:text-primary pt-32 pb-24 px-6 relative overflow-hidden">
+         {/* Parallax Background Text (Stroked & Masked) */}
+         <motion.div
+            style={{ y: bgy, opacity: bgOpacity }}
+            className="fixed inset-0 z-0 flex items-center justify-center pointer-events-none select-none mask-fog-v"
+         >
+            <h1 className="font-syne text-[30vw] font-black tracking-tightest leading-none text-stroke opacity-30 uppercase whitespace-nowrap">
+               THE CATALOG
+            </h1>
+         </motion.div>
+
          {/* Background Accents */}
          <div className="fixed inset-0 pointer-events-none opacity-20">
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-accent/20 blur-[120px] rounded-full" />
@@ -78,18 +99,18 @@ export default function CatalogPage() {
                   >
                      <Link href="/" className="group flex items-center gap-2 text-accent-gold/60 hover:text-accent-gold transition-colors">
                         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                        <span className="font-manrope text-[10px] uppercase tracking-[0.3em]">Back to Experience</span>
+                        <span className="font-sans text-[10px] uppercase tracking-[0.3em]">Back to Experience</span>
                      </Link>
                   </motion.div>
 
                   <motion.h1
                      initial={{ opacity: 0, y: 20 }}
                      animate={{ opacity: 1, y: 0 }}
-                     className="font-playfair text-6xl md:text-8xl text-white mb-4"
+                     className="font-syne text-6xl md:text-8xl text-white mb-4 uppercase font-black tracking-tightest leading-[0.85]"
                   >
-                     The Full <br /> <span className="text-accent-gold italic">Catalog</span>
+                     The Full <br /> <span className="text-accent-gold italic font-bold">Catalog</span>
                   </motion.h1>
-                  <p className="font-manrope text-secondary/60 max-w-md">
+                  <p className="font-sans text-secondary/60 max-w-md">
                      A curated selection of our finest mixology. Each drink is a masterpiece of flavor, texture, and visual artistry.
                   </p>
                </div>
@@ -101,12 +122,12 @@ export default function CatalogPage() {
                   className="flex gap-4"
                >
                   <div className="px-6 py-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-md">
-                     <span className="block font-manrope text-[10px] text-accent-gold/40 uppercase tracking-widest mb-1">Total Items</span>
-                     <span className="block font-playfair text-3xl text-white">{fullMenu.length}</span>
+                     <span className="block font-sans text-[10px] text-accent-gold/40 uppercase tracking-widest mb-1">Total Items</span>
+                     <span className="block font-syne text-3xl text-white font-bold">{fullMenu.length}</span>
                   </div>
                   <div className="px-6 py-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-md">
-                     <span className="block font-manrope text-[10px] text-accent-gold/40 uppercase tracking-widest mb-1">Curated since</span>
-                     <span className="block font-playfair text-3xl text-white">2024</span>
+                     <span className="block font-sans text-[10px] text-accent-gold/40 uppercase tracking-widest mb-1">Curated since</span>
+                     <span className="block font-syne text-3xl text-white font-bold">2024</span>
                   </div>
                </motion.div>
             </div>
@@ -137,20 +158,20 @@ export default function CatalogPage() {
                         )}
 
                         <div className="absolute bottom-4 right-4 bg-primary/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-                           <span className="font-manrope text-white text-sm font-bold">{item.price}</span>
+                           <span className="font-syne text-white text-sm font-bold tracking-tight">{item.price}</span>
                         </div>
                      </div>
 
                      <div className="p-8 flex flex-col flex-1">
-                        <span className="font-manrope text-accent-gold/60 text-[10px] uppercase tracking-[0.2em] mb-2 block">{item.category}</span>
-                        <h3 className="font-playfair text-3xl text-white mb-4 group-hover:text-accent-gold transition-colors">{item.title}</h3>
-                        <p className="font-manrope text-secondary/60 text-sm leading-relaxed mb-8 flex-1">
+                        <span className="font-sans text-accent-gold/60 text-[10px] uppercase tracking-[0.2em] mb-2 block">{item.category}</span>
+                        <h3 className="font-syne text-3xl text-white mb-4 group-hover:text-accent-gold transition-colors font-bold uppercase tracking-tight">{item.title}</h3>
+                        <p className="font-sans text-secondary/60 text-sm leading-relaxed mb-8 flex-1">
                            {item.description}
                         </p>
 
-                        <button className="w-full py-4 border border-white/10 rounded-xl group/btn overflow-hidden relative transition-colors hover:border-accent-gold/30">
+                        <button className="w-full py-4 border border-white/10 rounded-xl group/btn overflow-hidden relative transition-colors hover:border-accent-gold/30 glow-button">
                            <div className="absolute inset-0 bg-accent-gold translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500" />
-                           <span className="relative z-10 font-manrope text-[10px] uppercase tracking-[0.3em] text-white group-hover/btn:text-primary transition-colors">Order Now</span>
+                           <span className="relative z-10 font-sans text-[10px] uppercase tracking-[0.3em] text-white group-hover/btn:text-primary transition-colors">Order Now</span>
                         </button>
                      </div>
                   </motion.div>
@@ -164,8 +185,8 @@ export default function CatalogPage() {
                transition={{ delay: 1 }}
                className="mt-24 text-center border-t border-white/5 pt-24"
             >
-               <h2 className="font-playfair text-4xl text-white/40 mb-12">Looking for something custom?</h2>
-               <button className="px-12 py-6 bg-accent-gold text-primary font-manrope uppercase tracking-[0.4em] text-xs hover:bg-white hover:text-primary transition-all duration-500 rounded-full">
+               <h2 className="font-syne text-4xl text-white/40 mb-12 uppercase font-black">Looking for something custom?</h2>
+               <button className="px-12 py-6 bg-accent-gold text-primary font-sans uppercase tracking-[0.4em] text-xs hover:bg-white hover:text-primary transition-all duration-500 rounded-full glow-button">
                   Contact our Mixologist
                </button>
             </motion.div>

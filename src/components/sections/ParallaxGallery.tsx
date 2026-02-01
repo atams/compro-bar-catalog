@@ -55,8 +55,7 @@ export default function ParallaxGallery() {
          if (containerRef.current) {
             const width = containerRef.current.scrollWidth;
             const viewportWidth = window.innerWidth;
-            // The distance we need to translate is total width minus what's already visible
-            setScrollDistance(Math.max(0, width - viewportWidth + 48)); // 48px for extra padding buffer
+            setScrollDistance(Math.max(0, width - viewportWidth + 48));
          }
       };
 
@@ -66,33 +65,37 @@ export default function ParallaxGallery() {
    }, []);
 
    const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
+   const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
    return (
       <section ref={targetRef} id="gallery" className="relative bg-primary" style={{ height: "300vh" }}>
          <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-            {/* Section Title Background */}
-            <div className="absolute top-12 left-12 z-0 opacity-10">
-               <h2 className="font-playfair text-[15vw] font-black text-white leading-none tracking-tighter uppercase whitespace-nowrap">
-                  The Catalog
+            {/* Section Title Background (Parallax + Masked) */}
+            <motion.div
+               style={{ x: bgX }}
+               className="absolute top-12 left-12 z-0 opacity-10 mask-fog-h"
+            >
+               <h2 className="font-syne text-[20vw] font-black text-white leading-none tracking-tightest uppercase whitespace-nowrap text-stroke">
+                  THE CATALOG
                </h2>
-            </div>
+            </motion.div>
 
-            <motion.div ref={containerRef} style={{ x }} className="flex gap-24 px-12 md:px-24 items-start">
+            <motion.div ref={containerRef} style={{ x }} className="flex gap-24 px-12 md:px-24 items-start relative z-10">
                {catalogItems.map((item, index) => (
                   <CatalogCard key={item.id} item={item} index={index} />
                ))}
 
                {/* Final CTA Card */}
                <div className="relative w-[300px] md:w-[600px] shrink-0 flex flex-col items-center justify-center">
-                  <Link href="/catalog" className="group/cta relative w-full aspect-4/5 md:aspect-16/10 bg-white/5 rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-8 overflow-hidden hover:bg-white/10 transition-all duration-700">
+                  <Link href="/catalog" className="group/cta relative w-full aspect-4/5 md:aspect-16/10 bg-white/5 rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-8 overflow-hidden hover:bg-white/10 transition-all duration-700 glow-button">
                      <div className="absolute inset-0 bg-radial-gradient from-accent-gold/20 to-transparent opacity-0 group-hover/cta:opacity-100 transition-opacity duration-700" />
 
                      <div className="relative z-10 flex flex-col items-center gap-4">
                         <div className="w-20 h-20 rounded-full border border-accent-gold/20 flex items-center justify-center group-hover/cta:scale-110 transition-transform duration-700">
                            <ArrowRight className="text-accent-gold w-8 h-8 group-hover/cta:translate-x-2 transition-transform duration-500" strokeWidth={1} />
                         </div>
-                        <h3 className="font-playfair text-4xl text-white text-center">Explore Full Catalog</h3>
-                        <p className="font-manrope text-accent-gold/60 text-xs uppercase tracking-[0.3em]">Signature Collections</p>
+                        <h3 className="font-syne text-5xl text-white text-center font-black uppercase tracking-tightest">Explore Full <span className="text-accent-gold italic">Catalog</span></h3>
+                        <p className="font-sans text-accent-gold/60 text-[10px] uppercase tracking-[0.4em] font-bold">Signature Collections</p>
                      </div>
                   </Link>
                </div>
@@ -137,29 +140,29 @@ function CatalogCard({ item, index }: { item: any; index: number }) {
 
                {/* Label Reveal */}
                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <span className="font-playfair italic text-white text-4xl border-b border-accent-gold/40 pb-2">Crafted</span>
+                  <span className="font-syne italic font-bold text-white text-4xl border-b border-accent-gold/40 pb-2 uppercase tracking-tightest">Crafted</span>
                </div>
             </motion.div>
 
             {/* Price Tag Overlay */}
             <div className="absolute top-6 right-6 bg-primary/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 z-20">
-               <span className="font-manrope text-accent-gold text-lg font-bold">{item.price}</span>
+               <span className="font-sans text-accent-gold text-sm font-black tracking-widest uppercase">{item.price}</span>
             </div>
          </motion.div>
 
          {/* Content Details */}
          <div className="mt-12 w-full text-left md:flex justify-between items-start gap-12">
             <div className="max-w-md">
-               <h3 className="font-playfair text-4xl md:text-5xl text-white mb-4 leading-tight">
+               <h3 className="font-syne text-4xl md:text-5xl text-white mb-4 leading-[0.85] font-black uppercase tracking-tightest">
                   {item.title}
                </h3>
-               <p className="text-secondary/60 font-manrope text-sm md:text-base leading-relaxed mb-6">
+               <p className="text-secondary/60 font-sans text-sm md:text-base leading-relaxed mb-6">
                   {item.description}
                </p>
 
                <div className="flex flex-wrap gap-2">
                   {item.ingredients.map((ing: string) => (
-                     <span key={ing} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-secondary/80">
+                     <span key={ing} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-secondary/60 font-bold font-sans">
                         {ing}
                      </span>
                   ))}
@@ -168,14 +171,14 @@ function CatalogCard({ item, index }: { item: any; index: number }) {
 
             <div className="mt-8 md:mt-0 opacity-40 hover:opacity-100 transition-opacity">
                <button className="group flex items-center gap-4">
-                  <span className="font-manrope uppercase tracking-[0.3em] text-[10px] text-accent-gold group-hover:tracking-[0.5em] transition-all">Order</span>
+                  <span className="font-sans uppercase tracking-[0.4em] text-[10px] text-accent-gold group-hover:tracking-[0.6em] transition-all font-bold">Order</span>
                   <div className="w-12 h-px bg-accent-gold" />
                </button>
             </div>
          </div>
 
          {/* Background Number */}
-         <span className="absolute -top-12 -left-12 font-playfair italic text-8xl text-white/5 select-none z-[-1]">
+         <span className="absolute -top-12 -left-12 font-syne italic font-black text-8xl text-white/5 select-none z-[-1] tracking-tightest">
             0{index + 1}
          </span>
       </div>
