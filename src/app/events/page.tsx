@@ -28,7 +28,7 @@ export default function EventsPage() {
          <Projects />
 
          {/* Decorative Background Text (Stroked) */}
-         <div className="fixed inset-0 z-0 flex items-center justify-center pointer-events-none select-none opacity-5">
+         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none opacity-5">
             <h1 className="font-syne text-[15vw] font-black tracking-tightest leading-none text-stroke uppercase whitespace-nowrap opacity-60">
                EVENTS
             </h1>
