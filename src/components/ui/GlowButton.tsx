@@ -62,7 +62,7 @@ export default function GlowButton({ children, onClick, className = "" }: GlowBu
          <div className="absolute inset-0 rounded-full p-px bg-linear-to-r from-transparent via-accent-gold/40 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
 
          {/* Content */}
-         <span className="relative z-10 font-manrope uppercase tracking-[0.3em] text-[10px] text-white group-hover:text-accent-gold transition-colors">
+         <span className="relative z-10 font-sans uppercase tracking-[0.4em] text-[10px] font-bold text-white group-hover:text-accent-gold transition-colors">
             {children}
          </span>
       </motion.button>
