@@ -52,7 +52,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-accent-gold font-sans uppercase tracking-widest text-[10px] mb-1 font-bold">Direct Line</h4>
-                  <p className="font-syne text-xl text-white font-bold uppercase tracking-tight">+6287777888907</p>
+                  <a href="https://wa.me/6287777888907" target="_blank" rel="noopener noreferrer" className="font-syne text-xl text-white font-bold uppercase tracking-tight hover:text-accent-gold transition-colors">+6287777888907</a>
                 </div>
               </div>
             </motion.div>
