@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ReactNode } from "react";
 
 interface CinematicRevealProps {
@@ -19,7 +19,7 @@ export default function CinematicReveal({
    duration = 0.8,
 }: CinematicRevealProps) {
 
-   const variants = {
+   const variants: Variants = {
       hidden: {
          opacity: 0,
          clipPath:

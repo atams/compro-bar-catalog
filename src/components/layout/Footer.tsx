@@ -19,7 +19,8 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link href="/#about" className="text-2xl font-syne hover:text-accent-gold transition-colors">Philosophy</Link></li>
               <li><Link href="/catalog" className="text-2xl font-syne hover:text-accent-gold transition-colors">Catalog</Link></li>
-              <li><Link href="/#contact" className="text-2xl font-syne hover:text-accent-gold transition-colors">Reservation</Link></li>
+              <li><Link href="/events" className="text-2xl font-syne hover:text-accent-gold transition-colors">Events</Link></li>
+              <li><Link href="/reserve" className="text-2xl font-syne hover:text-accent-gold transition-colors">Reservation</Link></li>
             </ul>
           </div>
 
