@@ -27,7 +27,7 @@ export default function Footer() {
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as const }}
-            className="font-playfair font-black text-[18vw] leading-none tracking-tighter select-none text-white/5 mt-auto"
+            className="font-playfair font-black text-[12vw] leading-none tracking-tighter select-none text-white/5 mt-auto"
           >
             MIDNIGHT
           </motion.h1>
