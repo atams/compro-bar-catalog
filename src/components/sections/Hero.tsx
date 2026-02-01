@@ -55,7 +55,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="font-syne text-[18vw] md:text-[14vw] leading-[0.75] font-black text-white tracking-tightest mb-4 uppercase"
+            className="font-syne text-[15vw] md:text-[10vw] leading-[0.75] font-black text-white tracking-tightest mb-4 uppercase"
           >
             MIDNIGHT
           </motion.h1>

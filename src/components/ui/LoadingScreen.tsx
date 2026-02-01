@@ -80,7 +80,7 @@ export default function LoadingScreen() {
                         variants={letterVariants}
                         initial="initial"
                         animate="animate"
-                        className="font-playfair text-[15vw] md:text-[10vw] font-black text-white leading-none tracking-tighter"
+                        className="font-syne text-[15vw] md:text-[10vw] font-black text-stroke-bright leading-none tracking-tightest uppercase select-none mask-fog-v"
                      >
                         {letter}
                      </motion.span>
@@ -104,6 +104,10 @@ export default function LoadingScreen() {
                >
                   Established 2026 — Jakarta
                </motion.div>
+
+               {/* Decorative Gradients */}
+               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -mr-64 -mt-64 pointer-events-none" />
+               <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent-gold/5 rounded-full blur-[100px] -ml-32 -mb-32 pointer-events-none" />
             </motion.div>
          )}
       </AnimatePresence>

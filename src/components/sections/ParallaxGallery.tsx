@@ -75,7 +75,7 @@ export default function ParallaxGallery() {
                style={{ x: bgX }}
                className="absolute top-12 left-12 z-0 opacity-10 mask-fog-h"
             >
-               <h2 className="font-syne text-[20vw] font-black text-white leading-none tracking-tightest uppercase whitespace-nowrap text-stroke">
+               <h2 className="font-syne text-[15vw] md:text-[10vw] font-black text-white leading-none tracking-tightest uppercase whitespace-nowrap text-stroke">
                   THE CATALOG
                </h2>
             </motion.div>

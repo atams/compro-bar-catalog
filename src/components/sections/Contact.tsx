@@ -38,7 +38,7 @@ export default function Contact() {
               <span className="text-accent-gold font-sans uppercase tracking-[0.3em] text-[10px] font-bold mb-6 block">
                 Reservations
               </span>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-syne text-white leading-[0.85] mb-8 font-black uppercase tracking-tightest">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-syne text-white leading-[0.85] mb-8 font-black uppercase tracking-tightest">
                 The <span className="text-accent-gold italic font-bold">Concierge</span> Experience
               </h2>
               <p className="text-white/60 font-sans text-lg leading-relaxed max-w-md mb-12">

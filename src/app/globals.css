@@ -159,6 +159,12 @@ body::after {
   color: transparent !important;
 }
 
+.text-stroke-bright {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  text-stroke: 1px rgba(255, 255, 255, 0.5);
+  color: transparent !important;
+}
+
 .text-stroke-gold {
   -webkit-text-stroke: 1px rgba(243, 229, 171, 0.2);
   text-stroke: 1px rgba(243, 229, 171, 0.2);

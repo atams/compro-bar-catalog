@@ -1,13 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Contact from "@/components/sections/Contact";
 
 export default function ReservePage() {
+   const { scrollY } = useScroll();
+   const y = useTransform(scrollY, [0, 1000], [0, 250]);
    return (
-      <main className="min-h-screen bg-primary">
+      <main className="relative min-h-screen bg-primary overflow-hidden">
          {/* Simple Header for Subpages */}
          <div className="pt-32 pb-12 px-6">
             <div className="max-w-7xl mx-auto">
@@ -28,11 +30,11 @@ export default function ReservePage() {
          <Contact />
 
          {/* Decorative Background Text (Stroked) */}
-         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none opacity-5">
-            <h1 className="font-syne text-[15vw] font-black tracking-tightest leading-none text-stroke uppercase whitespace-nowrap opacity-60">
+         <motion.div style={{ y }} className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none opacity-5">
+            <h1 className="font-syne text-[20vw] font-black tracking-tightest leading-none text-stroke uppercase whitespace-nowrap opacity-60">
                RESERVE
             </h1>
-         </div>
+         </motion.div>
       </main>
    );
 }
