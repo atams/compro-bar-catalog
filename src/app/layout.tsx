@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Cinzel_Decorative, Manrope } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans, Cinzel_Decorative, Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -10,8 +10,15 @@ import NebulaBackground from "@/components/ui/NebulaBackground";
 import NoiseOverlay from "@/components/ui/NoiseOverlay";
 import QuickMenu from "@/components/ui/QuickMenu";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  weight: ["400", "500", "600", "700", "800"],
+});
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+});
 const cinzel = Cinzel_Decorative({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
@@ -34,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} ${cinzel.variable} ${manrope.variable} font-sans antialiased bg-background text-foreground overflow-x-hidden selection:bg-accent selection:text-white`}>
+      <body suppressHydrationWarning className={`${syne.variable} ${plusJakarta.variable} ${cinzel.variable} ${manrope.variable} font-sans antialiased bg-background text-foreground overflow-x-hidden selection:bg-accent selection:text-white`}>
         <NebulaBackground />
         <NoiseOverlay />
         <SmoothScroll>
