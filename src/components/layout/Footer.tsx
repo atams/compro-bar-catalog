@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
 
         {/* Right: Info */}
-        <div className="flex flex-col justify-between items-end text-right mt-12 md:mt-0 max-w-full md:max-w-[400px] px-6 md:px-0 pb-24 md:pb-0">
+        <div className="flex flex-col justify-between items-start md:items-end text-left md:text-right mt-12 md:mt-0 max-w-full md:max-w-[400px] px-6 md:px-0 pb-32 md:pb-0 z-20">
           <div className="space-y-8">
             <div>
               <h5 className="font-sans uppercase tracking-widest text-xs mb-4 text-accent-gold">Location</h5>
@@ -48,14 +48,14 @@ export default function Footer() {
             </div>
             <div>
               <h5 className="font-sans uppercase tracking-widest text-xs mb-4 text-accent-gold">Connect</h5>
-              <div className="flex gap-4 justify-end">
+              <div className="flex gap-4 justify-start md:justify-end">
                 <a href="https://www.instagram.com/atamsindonesia/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary transition-all duration-500 glow-button"><Instagram size={20} strokeWidth={1.2} /></a>
                 <a href="https://wa.me/6287777888907" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary transition-all duration-500 glow-button"><MessageCircle size={20} strokeWidth={1.2} /></a>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 flex gap-8 text-[10px] opacity-40 font-sans uppercase tracking-widest">
+          <div className="mt-12 flex flex-col md:flex-row gap-4 md:gap-8 text-[10px] opacity-40 font-sans uppercase tracking-widest">
             <p>© 2026 {name === "MIDNIGHT" ? "Midnight Mixology" : name}</p>
             <a href="https://atamsindonesia.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-opacity">Designed by ATAMS</a>
           </div>
