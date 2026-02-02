@@ -31,7 +31,7 @@ export default function Footer() {
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as const }}
-            className={`font-syne font-black leading-none tracking-tightest select-none text-stroke opacity-10 mt-auto mask-fog-v uppercase ${name.length > 10 ? "text-[12vw] md:text-[8vw]" : (name.length > 6 ? "text-[15vw] md:text-[10vw]" : "text-[18vw] md:text-[12vw]")}`}
+            className={`font-syne font-black leading-none tracking-tightest select-none text-stroke opacity-10 mt-auto mask-fog-v uppercase ${name.length > 10 ? "text-[8vw] md:text-[8vw]" : (name.length > 6 ? "text-[12vw] md:text-[10vw]" : "text-[15vw] md:text-[12vw]")}`}
           >
             {name}
           </motion.h1>
