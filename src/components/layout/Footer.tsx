@@ -27,14 +27,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <motion.h1
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as const }}
-            className={`font-syne font-black leading-none tracking-tightest select-none text-stroke opacity-10 mt-auto mask-fog-v uppercase ${name.length > 10 ? "text-[8vw] md:text-[8vw]" : (name.length > 6 ? "text-[12vw] md:text-[10vw]" : "text-[15vw] md:text-[12vw]")}`}
-          >
-            {name}
-          </motion.h1>
+
         </div>
 
         {/* Right: Info */}
@@ -59,6 +52,19 @@ export default function Footer() {
             <p>© 2026 {name === "MIDNIGHT" ? "Midnight Mixology" : name}</p>
             <a href="https://atamsindonesia.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-opacity">Designed by ATAMS</a>
           </div>
+        </div>
+
+        {/* Background Brand Name - Absolute Full Width */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none flex justify-center items-end z-0 pb-0">
+          <motion.h1
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as const }}
+            style={{ fontSize: `clamp(3rem, ${Math.min(15, 100 / (name.length * 0.9))}vw, 30rem)` }}
+            className="font-syne font-black leading-none tracking-tightest select-none text-stroke opacity-10 mask-fog-v uppercase whitespace-nowrap text-center w-full"
+          >
+            {name}
+          </motion.h1>
         </div>
       </div>
 
