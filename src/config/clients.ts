@@ -183,6 +183,126 @@ export const clients: Record<string, ClientConfig> = {
             image: "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?q=80&w=2600&auto=format&fit=crop",
          }
       ]
+   },
+   "speakout": {
+      name: "SPEAKOUT",
+      tagline: "Cafe & Lounge",
+      location: "Daan Mogot Rd No.62,\nTangerang",
+      hours: "10:00 — Late",
+      catalog: [
+         {
+            id: 1,
+            title: "Lounge Lizard",
+            price: "IDR 135K",
+            ingredients: ["Melon Liqueur", "Vodka", "Lemon", "Soda"],
+            description: "Bright green and refreshing. A classic lounge staple.",
+            image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 2,
+            title: "City Lights",
+            price: "IDR 145K",
+            ingredients: ["Gin", "Blueberry", "Thyme", "Tonic"],
+            description: "Inspired by the Tangerang skyline at night.",
+            image: "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 3,
+            title: "Acoustic Berry",
+            price: "IDR 125K",
+            ingredients: ["Strawberry Puree", "Rum", "Basil", "Lime"],
+            description: "Sweet notes perfect for live music vibes.",
+            image: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 4,
+            title: "Mic Drop",
+            price: "IDR 180K",
+            ingredients: ["Whiskey", "Tobacco Smoke", "Honey", "Ginger"],
+            description: "A smoky finish that leaves a lasting impression.",
+            image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2600&auto=format&fit=crop",
+         }
+      ]
+   },
+   "wooden-bar": {
+      name: "WOODEN BAR",
+      tagline: "Serpong",
+      location: "Pasar Modern Paramount,\nGading Serpong",
+      hours: "17:00 — 02:00",
+      catalog: [
+         {
+            id: 1,
+            title: "Timber",
+            price: "IDR 130K",
+            ingredients: ["Bourbon", "Oak Chip Infusion", "Maple", "Bitters"],
+            description: "Woody and warm. The essence of the bar itself.",
+            image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 2,
+            title: "Forest Floor",
+            price: "IDR 140K",
+            ingredients: ["Gin", "Pine Liqueur", "Rosemary", "Cucumber"],
+            description: "Fresh, herbal, and earthy.",
+            image: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 3,
+            title: "Carpenter's Nail",
+            price: "IDR 150K",
+            ingredients: ["Scotch", "Drambuie", "Lemon Twist"],
+            description: "A rusty nail twist that hits hard.",
+            image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 4,
+            title: "Sawdust",
+            price: "IDR 125K",
+            ingredients: ["Vodka", "Hazelnut", "Cream", "Nutmeg"],
+            description: "Nutty, creamy, and smooth.",
+            image: "https://images.unsplash.com/photo-1575023782549-62ca0d244b39?q=80&w=2600&auto=format&fit=crop",
+         }
+      ]
+   },
+   "borders": {
+      name: "BORDERS",
+      tagline: "Bar & Grill",
+      location: "Aniva Junction,\nGading Serpong",
+      hours: "11:00 — Late",
+      catalog: [
+         {
+            id: 1,
+            title: "The Crossing",
+            price: "IDR 140K",
+            ingredients: ["Tequila", "Jalapeno", "Cilantro", "Lime"],
+            description: "A spicy margarita that bridges the gap.",
+            image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 2,
+            title: "Grill Master",
+            price: "IDR 150K",
+            ingredients: ["Mezcal", "Grilled Pineapple", "Agave", "Lime"],
+            description: "Smoky and sweet, pairing perfectly with steak.",
+            image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 3,
+            title: "No Man's Land",
+            price: "IDR 160K",
+            ingredients: ["Absinthe", "Gin", "Lillet Blanc", "Lemon"],
+            description: "A strong corporation revitalizer.",
+            image: "https://images.unsplash.com/photo-1597075687490-8f673c6c17f6?q=80&w=2600&auto=format&fit=crop",
+         },
+         {
+            id: 4,
+            title: "Checkpoint",
+            price: "IDR 135K",
+            ingredients: ["Rum", "Coffee Liqueur", "Cold Brew"],
+            description: "Keep moving with this caffeinated kick.",
+            image: "https://images.unsplash.com/photo-1575023782549-62ca0d244b39?q=80&w=2600&auto=format&fit=crop",
+         }
+      ]
    }
 };
 
