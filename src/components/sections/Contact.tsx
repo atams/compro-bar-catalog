@@ -38,7 +38,7 @@ export default function Contact() {
               <span className="text-accent-gold font-sans uppercase tracking-[0.3em] text-[10px] font-bold mb-6 block">
                 Reservations
               </span>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-syne text-white leading-[0.85] mb-8 font-black uppercase tracking-tightest">
+              <h2 className="text-4xl md:text-7xl lg:text-8xl xl:text-8xl font-syne text-white leading-[0.85] mb-8 font-black uppercase tracking-tightest">
                 The <span className="text-accent-gold italic font-bold">Concierge</span> Experience
               </h2>
               <p className="text-white/60 font-sans text-lg leading-relaxed max-w-md mb-12">
@@ -48,7 +48,7 @@ export default function Contact() {
               <div className="space-y-6 border-l border-white/10 pl-8">
                 <div>
                   <h4 className="text-accent-gold font-sans uppercase tracking-widest text-[10px] mb-1 font-bold">Inquiries</h4>
-                  <a href="mailto:contact@atamsindonesia.com" className="font-syne text-xl text-white font-bold uppercase tracking-tight hover:text-accent-gold transition-colors">contact@atamsindonesia.com</a>
+                  <a href="mailto:contact@atamsindonesia.com" className="font-syne text-base md:text-xl text-white font-bold uppercase tracking-tight hover:text-accent-gold transition-colors break-all">contact@atamsindonesia.com</a>
                 </div>
                 <div>
                   <h4 className="text-accent-gold font-sans uppercase tracking-widest text-[10px] mb-1 font-bold">Direct Line</h4>
