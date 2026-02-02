@@ -18,7 +18,7 @@ export default function PageLayout({ children }: { children: ReactNode }) {
             {children}
          </main>
          {/* Spacer for Footer Reveal */}
-         <div className="h-[600px] md:h-[500px] pointer-events-none" />
+         <div className="h-[700px] md:h-[500px] pointer-events-none" />
          <Footer />
          <LoadingScreen />
       </SmoothScroll>

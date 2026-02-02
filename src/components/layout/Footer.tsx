@@ -10,10 +10,10 @@ export default function Footer() {
 
   return (
     <footer
-      className="fixed bottom-0 left-0 w-full h-[600px] md:h-[500px] bg-primary z-0 flex flex-col justify-between text-secondary overflow-hidden border-t border-white/5"
+      className="fixed bottom-0 left-0 w-full h-[700px] md:h-[500px] bg-primary z-0 flex flex-col justify-between text-secondary overflow-hidden border-t border-white/5"
     >
       {/* Content Container */}
-      <div className="container mx-auto px-6 md:px-12 h-full flex flex-col md:flex-row justify-between pt-12 md:pt-24 z-10 relative">
+      <div className="container mx-auto px-6 md:px-12 h-full flex flex-col md:flex-row justify-between pt-10 md:pt-24 z-10 relative">
 
         {/* Left: Navigation */}
         <div className="flex flex-col justify-between h-full">
@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
 
         {/* Right: Info */}
-        <div className="flex flex-col justify-between items-start md:items-end text-left md:text-right mt-12 md:mt-0 max-w-full md:max-w-[400px] px-6 md:px-0 pb-32 md:pb-0 z-20">
+        <div className="flex flex-col justify-between items-start md:items-end text-left md:text-right mt-8 md:mt-0 max-w-full md:max-w-[400px] px-6 md:px-0 pb-28 md:pb-0 z-20">
           <div className="space-y-8">
             <div>
               <h5 className="font-sans uppercase tracking-widest text-xs mb-4 text-accent-gold">Location</h5>
