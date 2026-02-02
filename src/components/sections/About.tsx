@@ -22,7 +22,7 @@ export default function About() {
           <span className="text-accent-gold uppercase tracking-widest text-[10px] font-bold mb-4 block font-sans">Our Philosophy</span>
           <TextReveal
             text="Sip. Savor. Socialize."
-            className="text-5xl md:text-8xl font-syne text-secondary mb-8 leading-[0.85] uppercase font-black tracking-tightest"
+            className="text-4xl md:text-8xl font-syne text-secondary mb-8 leading-[0.85] uppercase font-black tracking-tightest"
             delay={0.2}
           />
           <p className="text-xl md:text-2xl text-secondary/60 max-w-4xl mx-auto leading-relaxed font-sans">

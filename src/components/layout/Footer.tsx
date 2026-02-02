@@ -31,14 +31,14 @@ export default function Footer() {
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as const }}
-            className="font-syne font-black text-[15vw] md:text-[10vw] leading-none tracking-tightest select-none text-stroke opacity-10 mt-auto mask-fog-v uppercase"
+            className={`font-syne font-black leading-none tracking-tightest select-none text-stroke opacity-10 mt-auto mask-fog-v uppercase ${name.length > 10 ? "text-[12vw] md:text-[8vw]" : (name.length > 6 ? "text-[15vw] md:text-[10vw]" : "text-[18vw] md:text-[12vw]")}`}
           >
             {name}
           </motion.h1>
         </div>
 
         {/* Right: Info */}
-        <div className="flex flex-col justify-between items-end text-right mt-12 md:mt-0 max-w-full md:max-w-[400px] px-6 md:px-0">
+        <div className="flex flex-col justify-between items-end text-right mt-12 md:mt-0 max-w-full md:max-w-[400px] px-6 md:px-0 pb-24 md:pb-0">
           <div className="space-y-8">
             <div>
               <h5 className="font-sans uppercase tracking-widest text-xs mb-4 text-accent-gold">Location</h5>
