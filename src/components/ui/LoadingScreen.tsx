@@ -82,7 +82,7 @@ export default function LoadingScreen() {
                         variants={letterVariants}
                         initial="initial"
                         animate="animate"
-                        className="font-syne text-[15vw] md:text-[10vw] font-black text-stroke-bright leading-none tracking-tightest uppercase select-none mask-fog-v"
+                        className={`font-syne font-black text-stroke-bright leading-none tracking-tightest uppercase select-none mask-fog-v ${brandName.length > 10 ? "text-[8vw] md:text-[5vw]" : (brandName.length > 6 ? "text-[12vw] md:text-[8vw]" : "text-[15vw] md:text-[10vw]")}`}
                      >
                         {letter}
                      </motion.span>
