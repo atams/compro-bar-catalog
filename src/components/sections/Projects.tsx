@@ -51,7 +51,7 @@ export default function Projects() {
                >
                   <span className="text-secondary/60 font-bold tracking-widest uppercase mb-2 block font-sans text-[10px]">What's On</span>
                </motion.div>
-               <h2 className="text-5xl md:text-8xl font-syne font-black text-secondary uppercase tracking-tightest leading-[0.85]">
+               <h2 className="text-4xl md:text-8xl font-syne font-black text-secondary uppercase tracking-tightest leading-[0.85]">
                   Events & <span className="text-accent-gold italic font-bold">Highlights</span>
                </h2>
             </div>

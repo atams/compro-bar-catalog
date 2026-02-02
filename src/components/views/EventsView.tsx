@@ -14,7 +14,7 @@ export default function EventsView() {
       <PageLayout>
          <div className="relative min-h-screen bg-primary overflow-hidden">
             {/* Simple Header for Subpages */}
-            <div className="pt-32 pb-12 px-6">
+            <div className="pt-40 pb-12 px-6">
                <div className="max-w-7xl mx-auto">
                   <motion.div
                      initial={{ opacity: 0, x: -20 }}
