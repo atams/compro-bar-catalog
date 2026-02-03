@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="fixed bottom-0 left-0 w-full h-[700px] md:h-[500px] bg-primary z-0 flex flex-col justify-between text-secondary overflow-hidden border-t border-white/5"
+      className="fixed bottom-0 left-0 w-full h-[850px] md:h-[500px] bg-primary z-0 flex flex-col justify-between text-secondary overflow-hidden border-t border-white/5"
     >
       {/* Content Container */}
       <div className="container mx-auto px-6 md:px-12 h-full flex flex-col md:flex-row justify-between pt-10 md:pt-24 z-10 relative">
@@ -53,19 +53,19 @@ export default function Footer() {
             <a href="https://atamsindonesia.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-opacity">Designed by ATAMS</a>
           </div>
         </div>
+      </div>
 
-        {/* Background Brand Name - Absolute Full Width */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none flex justify-center items-end z-0 pb-0">
-          <motion.h1
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as const }}
-            style={{ fontSize: `clamp(3rem, ${Math.min(15, 100 / (name.length * 0.9))}vw, 30rem)` }}
-            className="font-syne font-black leading-none tracking-tightest select-none text-stroke opacity-10 mask-fog-v uppercase whitespace-nowrap text-center w-full"
-          >
-            {name}
-          </motion.h1>
-        </div>
+      {/* Background Brand Name - Absolute Full Width (True Edge-to-Edge) */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none flex justify-center items-end z-0 pb-6 md:pb-0">
+        <motion.h1
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as const }}
+          style={{ fontSize: `clamp(1rem, ${Math.min(15, 100 / (name.length * 0.9))}vw, 30rem)` }}
+          className="font-syne font-black leading-none tracking-tightest select-none text-stroke opacity-10 mask-fog-v uppercase whitespace-nowrap text-center w-full"
+        >
+          {name}
+        </motion.h1>
       </div>
 
       {/* Decorative Gradients */}
