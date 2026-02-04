@@ -87,8 +87,10 @@ export default function Header() {
         <button
           onClick={() => setIsMenuOpen(true)}
           className="flex items-center gap-2 group"
+          aria-label="Open menu"
         >
-          {/* ... */}
+          <span className="font-sans text-xs uppercase tracking-widest text-white/80 group-hover:text-white transition-colors font-bold hidden md:block">Menu</span>
+          <Menu className="text-white group-hover:scale-110 transition-transform duration-300" strokeWidth={1.2} aria-hidden="true" />
         </button>
       </header>
 
@@ -109,9 +111,10 @@ export default function Header() {
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-2 group text-primary"
+                aria-label="Close menu"
               >
-                <span className="font-sans text-sm uppercase tracking-widest group-hover:text-accent transition-colors font-bold">Close</span>
-                <X className="group-hover:rotate-90 transition-transform duration-500" strokeWidth={1.2} />
+                <span className="font-sans text-sm uppercase tracking-widest group-hover:text-accent transition-colors font-bold" aria-hidden="true">Close</span>
+                <X className="group-hover:rotate-90 transition-transform duration-500" strokeWidth={1.2} aria-hidden="true" />
               </button>
             </div>
 

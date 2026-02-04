@@ -68,43 +68,51 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Guest Count */}
                 <div className="space-y-2">
-                  <label className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Party Size</label>
+                  <label htmlFor="party-size" className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Party Size</label>
                   <input
+                    id="party-size"
                     type="text"
                     value={formData.guests}
                     onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
                     className="w-full bg-transparent border-b border-white/10 py-3 font-syne text-2xl text-white outline-none focus:border-accent-gold transition-colors font-bold"
+                    aria-label="Party Size"
                   />
                 </div>
 
                 {/* Time */}
                 <div className="space-y-2">
-                  <label className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Preferred Time</label>
+                  <label htmlFor="preferred-time" className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Preferred Time</label>
                   <input
+                    id="preferred-time"
                     type="text"
                     value={formData.time}
                     onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                     className="w-full bg-transparent border-b border-white/10 py-3 font-syne text-2xl text-white outline-none focus:border-accent-gold transition-colors font-bold"
+                    aria-label="Preferred Time"
                   />
                 </div>
 
                 {/* Date */}
                 <div className="md:col-span-2 space-y-2">
-                  <label className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Calendar Date</label>
+                  <label htmlFor="calendar-date" className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Calendar Date</label>
                   <input
+                    id="calendar-date"
                     type="text"
                     placeholder="Tomorrow"
                     className="w-full bg-transparent border-b border-white/10 py-3 font-syne text-2xl text-white outline-none focus:border-accent-gold transition-colors placeholder:text-white/20 font-bold"
+                    aria-label="Calendar Date"
                   />
                 </div>
 
                 {/* Name */}
                 <div className="md:col-span-2 space-y-2">
-                  <label className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Full Name</label>
+                  <label htmlFor="full-name" className="block font-sans uppercase tracking-widest text-[10px] text-accent-gold/60 font-bold">Full Name</label>
                   <input
+                    id="full-name"
                     type="text"
                     placeholder="Johnathan Doe"
                     className="w-full bg-transparent border-b border-white/10 py-3 font-syne text-2xl text-white outline-none focus:border-accent-gold transition-colors placeholder:text-white/20 font-bold"
+                    aria-label="Full Name"
                   />
                 </div>
               </div>
